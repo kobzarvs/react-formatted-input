@@ -2,14 +2,21 @@
   "name": "react-fmt-input",
   "version": "1.0.0",
   "description": "React formatted input component",
-  "keywords": ["typescript", "react", "starter", "mask", "input", "formatted"],
+  "keywords": [
+    "typescript",
+    "react",
+    "starter",
+    "mask",
+    "input",
+    "formatted"
+  ],
   "main": "src/index.tsx",
   "license": "MIT",
   "repository": "https://github.com/kobzarvs/react-formatted-input.git",
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "^3.4.4"
   },
   "devDependencies": {
     "@types/react": "17.0.20",
@@ -22,7 +29,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
