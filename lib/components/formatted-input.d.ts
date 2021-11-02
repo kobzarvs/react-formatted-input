@@ -6,7 +6,7 @@ export interface FormattedInputProps {
     placeholder: string;
     errorMessage: string;
     parser?: (str: string | null | undefined) => string;
-    formatter: (str: string, mask: string) => string;
+    formatter?: (str: string, mask: string) => string;
     onChange: (str: string) => void;
 }
 export declare const defaultParser: (value: string | null | undefined) => string;
