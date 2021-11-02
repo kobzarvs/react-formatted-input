@@ -1,5 +1,3 @@
-# react-formatted-input
-
 ![demo](/public/formatted-input.gif)
 
 ## Mask format
