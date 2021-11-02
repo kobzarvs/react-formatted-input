@@ -1,6 +1,6 @@
 {
   "name": "react-fmt-input",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React formatted input component",
   "keywords": [
     "typescript",
@@ -11,6 +11,7 @@
     "formatted"
   ],
   "main": "src/index.tsx",
+  "module": "lib/index.js",
   "license": "MIT",
   "repository": "https://github.com/kobzarvs/react-formatted-input.git",
   "dependencies": {
