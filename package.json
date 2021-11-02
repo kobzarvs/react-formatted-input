@@ -1,10 +1,12 @@
 {
   "name": "@react-wm/react-formatted-input",
+  "private": "true",
   "version": "1.0.0",
   "description": "React formatted input component",
   "keywords": ["typescript", "react", "starter", "mask", "input", "formatted"],
   "main": "src/index.tsx",
   "license": "MIT",
+  "repository": "https://github.com/kobzarvs/react-formatted-input.git",
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
