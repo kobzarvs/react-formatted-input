@@ -7,7 +7,6 @@ import {
   useCallback,
   useEffect
 } from "react";
-import "./styles.css";
 
 interface FormattedInputProps {
   label: string;
