@@ -1,5 +1,9 @@
 # react-formatted-input
 
+## Demo
+
+![demo](/public/formatted-input-demo.mp4)
+
 ## Mask format
 ```
 ^ - upercase character
