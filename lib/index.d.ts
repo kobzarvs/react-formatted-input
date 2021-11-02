@@ -11,5 +11,5 @@ export interface FormattedInputProps {
 }
 export declare const defaultParser: (value: string | null | undefined) => string;
 export declare const defaultFormatter: (value: string, mask: string) => string;
-export declare const Index: ({ label, value, parser, mask, placeholder, errorMessage, formatter, onChange, }: FormattedInputProps) => JSX.Element;
+export declare const FormattedInput: ({ label, value, parser, mask, placeholder, errorMessage, formatter, onChange, }: FormattedInputProps) => JSX.Element;
 //# sourceMappingURL=index.d.ts.map
