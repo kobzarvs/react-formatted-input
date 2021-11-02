@@ -1,6 +1,5 @@
 {
   "name": "@react-wm/react-formatted-input",
-  "private": "true",
   "version": "1.0.0",
   "description": "React formatted input component",
   "keywords": ["typescript", "react", "starter", "mask", "input", "formatted"],
