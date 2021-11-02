@@ -2,7 +2,7 @@
 
 ## Demo
 
-![demo](/public/formatted-input-demo.mp4)
+![demo](/public/formatted-input.gif)
 
 ## Mask format
 ```
