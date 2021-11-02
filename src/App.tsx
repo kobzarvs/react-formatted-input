@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {defaultFormatter, FormattedInput} from './components/formatted-input';
 
 export function App() {

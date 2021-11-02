@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "brace-style": [
+      "warn",
+      "1tbs"
+    ],
+    "comma-dangle": "off",
+    "indent": "off",
+    "no-invalid-this": "warn",
+    "no-new-wrappers": "warn",
+    "no-return-await": "warn",
+    "no-shadow": "off",
+    "import/no-duplicates": "off",
+    "no-trailing-spaces": "off",
+    "no-void": "warn",
+    "prefer-const": "off",
+    "prefer-object-spread": "warn",
+    "radix": "warn",
+    "spaced-comment": "off",
+    "use-isnan": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/type-annotation-spacing": "warn"
+  }
+}
