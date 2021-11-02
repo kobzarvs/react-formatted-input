@@ -93,7 +93,7 @@ const getMaskPosition = (
   return pos;
 };
 
-export const Index = ({
+export const FormattedInput = ({
   label,
   value,
   parser,
