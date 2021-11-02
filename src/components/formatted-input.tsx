@@ -5,8 +5,9 @@ import {
   useRef,
   MouseEvent,
   useCallback,
-  useEffect
-} from "react";
+  useEffect,
+} from 'react';
+
 
 export interface FormattedInputProps {
   label: string;
@@ -19,13 +20,14 @@ export interface FormattedInputProps {
   onChange: (str: string) => void;
 }
 
-const MASK_CHARS = ["^", "_", "#", undefined];
+
+const MASK_CHARS = ['^', '_', '#', undefined];
 
 export const defaultParser = (value: string | null | undefined): string => {
   if (value === null || value === undefined) {
-    return "";
+    return '';
   }
-  return value.replace(/[^A-ZА-Я0-9]/gi, "");
+  return value.replace(/[^A-ZА-Я0-9]/gi, '');
 };
 
 export const defaultFormatter = (value: string, mask: string): string => {
@@ -38,7 +40,7 @@ export const defaultFormatter = (value: string, mask: string): string => {
       result.push(mask[m]);
     }
   }
-  return result.join("");
+  return result.join('');
 };
 
 const getStartPosition = (mask: string): number => {
@@ -52,7 +54,7 @@ const getStartPosition = (mask: string): number => {
 const getValuePosition = (
   value: string,
   mask: string,
-  maskPos: number
+  maskPos: number,
 ): number => {
   let pos = 0;
   for (let i = 0; i < maskPos; ++i) {
@@ -66,7 +68,7 @@ const getValuePosition = (
 const setCaret = (
   target: HTMLInputElement,
   pos: number,
-  callback?: () => number
+  callback?: () => number,
 ) => {
   requestAnimationFrame(() => {
     if (callback) {
@@ -79,7 +81,7 @@ const setCaret = (
 const getMaskPosition = (
   value: string,
   mask: string,
-  valuePos: number
+  valuePos: number,
 ): number => {
   let pos = 0;
   for (let i = 0; pos < mask.length && i < valuePos; ++pos) {
@@ -99,7 +101,7 @@ export const FormattedInput = ({
   placeholder,
   errorMessage,
   formatter,
-  onChange
+  onChange,
 }: FormattedInputProps) => {
   parser = parser || defaultParser;
 
@@ -111,20 +113,20 @@ export const FormattedInput = ({
   const getPattern = useCallback(
     (value: string): string => {
       if (value.length === 0) {
-        return "";
+        return '';
       }
 
-      const maskChars = mask.split("").slice(0, value.length);
-      maskChars.unshift("");
+      const maskChars = mask.split('').slice(0, value.length);
+      maskChars.unshift('');
       const reStr = maskChars
-        .join("\\")
-        .replace(/\\#/g, "\\d")
-        .replace(/\\\^/g, "[A-ZА-Я]")
-        .replace(/\\_/g, "[a-zа-я]");
+        .join('\\')
+        .replace(/\\#/g, '\\d')
+        .replace(/\\\^/g, '[A-ZА-Я]')
+        .replace(/\\_/g, '[a-zа-я]');
 
       return `^${reStr}$`;
     },
-    [mask]
+    [mask],
   );
 
   const validate = useCallback(
@@ -146,11 +148,12 @@ export const FormattedInput = ({
         return false;
       }
     },
-    [mask]
+    [mask],
   );
 
   const handleInput = useCallback(
     (e: FormEvent<HTMLInputElement>) => {
+      // @ts-ignore
       const target = e.target as HTMLInputElement;
       const value = target.value.substr(0, mask.length);
       let savePos = target.selectionStart || getStartPosition(mask);
@@ -161,61 +164,61 @@ export const FormattedInput = ({
         setCaret(target, savePos);
       }
     },
-    [parser, onChange, mask]
+    [parser, onChange, mask],
   );
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       let caret = ref.current?.selectionStart || getStartPosition(mask);
+      // @ts-ignore
       const target = e.target as HTMLInputElement;
 
       switch (e.key) {
-        case "ArrowUp":
-        case "Home":
-        case "Escape":
-          if (e.key === "Escape") {
-            onChange("");
+        case 'ArrowUp':
+        case 'Home':
+        case 'Escape':
+          if (e.key === 'Escape') {
+            onChange('');
           }
           const pos = getStartPosition(mask);
           setCaret(target, pos);
           e.preventDefault();
           e.stopPropagation();
           break;
-        case "Backspace":
-          {
-            const valuePos = getValuePosition(value, mask, caret);
-            const newValue = `${value.substring(
-              0,
-              valuePos - 1
-            )}${value.substring(valuePos, value.length)}`;
-            let maskPos = getMaskPosition(newValue, mask, valuePos);
-            maskPos = Math.max(maskPos - 1, getStartPosition(mask));
-            onChange(newValue);
-            setCaret(target, maskPos);
-            e.preventDefault();
-            e.stopPropagation();
-          }
+        case 'Backspace': {
+          const valuePos = getValuePosition(value, mask, caret);
+          const newValue = `${value.substring(
+            0,
+            valuePos - 1,
+          )}${value.substring(valuePos, value.length)}`;
+          let maskPos = getMaskPosition(newValue, mask, valuePos);
+          maskPos = Math.max(maskPos - 1, getStartPosition(mask));
+          onChange(newValue);
+          setCaret(target, maskPos);
+          e.preventDefault();
+          e.stopPropagation();
+        }
           break;
-        case "Delete":
-          {
-            const valuePos = getValuePosition(value, mask, caret);
-            const newValue = `${value.substring(0, valuePos)}${value.substring(
-              valuePos + 1,
-              value.length
-            )}`;
-            onChange(newValue);
-            setCaret(target, caret);
-            e.preventDefault();
-            e.stopPropagation();
-          }
+        case 'Delete': {
+          const valuePos = getValuePosition(value, mask, caret);
+          const newValue = `${value.substring(0, valuePos)}${value.substring(
+            valuePos + 1,
+            value.length,
+          )}`;
+          onChange(newValue);
+          setCaret(target, caret);
+          e.preventDefault();
+          e.stopPropagation();
+        }
           break;
       }
     },
-    [mask, value, onChange]
+    [mask, value, onChange],
   );
 
   const handleMouseDown = useCallback(
     (e: MouseEvent) => {
+      // @ts-ignore
       const target = e.target as HTMLInputElement;
       setCaret(target, 0, () => {
         const start = getStartPosition(mask);
@@ -225,41 +228,42 @@ export const FormattedInput = ({
         return target.selectionStart || 0;
       });
     },
-    [mask]
+    [mask],
   );
 
-  const errorBorder = error ? { border: "2px solid red" } : {};
+  const errorBorder = error ? {border: '2px solid red'} : {};
 
   useEffect(() => {
     validate(formattedValue, true);
   }, [formattedValue, validate]);
 
   return (
-    <div style={{ height: "2.5rem" }}>
-      <label htmlFor={id.current} style={{ display: "flex" }}>
-        <span style={{ margin: "5px" }}>{label} </span>
-        <div style={{ display: "relative" }}>
+    <div style={{height: '2.5rem'}}>
+      <label htmlFor={id.current} style={{display: 'flex'}}>
+        <span style={{margin: '5px'}}>{label} </span>
+        <div style={{display: 'relative'}}>
           <input
             style={{
-              position: "absolute",
-              color: "#a9a9a9",
-              pointerEvents: "none",
-              border: "2px solid transparent",
-              outline: "none"
+              position: 'absolute',
+              color: '#a9a9a9',
+              pointerEvents: 'none',
+              border: '2px solid transparent',
+              outline: 'none',
             }}
             tabIndex={-1}
             value={formattedValue.concat(
-              placeholder.slice(formattedValue.length)
+              placeholder.slice(formattedValue.length),
             )}
-            onChange={() => {}}
+            onChange={() => {
+            }}
           />
           <input
             id={id.current}
             style={{
-              position: "absolute",
-              caretColor: "black",
-              background: "transparent",
-              ...errorBorder
+              position: 'absolute',
+              caretColor: 'black',
+              background: 'transparent',
+              ...errorBorder,
             }}
             ref={ref}
             value={formattedValue}
@@ -269,10 +273,10 @@ export const FormattedInput = ({
           />
           <div
             style={{
-              color: "red",
-              position: "relative",
-              top: "1.4rem",
-              fontSize: 12
+              color: 'red',
+              position: 'relative',
+              top: '1.4rem',
+              fontSize: 12,
             }}
           >
             {error && errorMessage}

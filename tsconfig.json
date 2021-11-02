@@ -9,6 +9,17 @@
       "dom",
       "es2020"
     ],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "target": "es6",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   }
 }
