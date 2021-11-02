@@ -49,7 +49,7 @@ const Demo = () => {
 
 ## Codesandbox example
 
-https://codesandbox.io/s/sharp-boyd-fk0od?file=/src/App.tsx
+https://codesandbox.io/s/react-formatted-input-fk0od
 
 ## Vercel demo
 
