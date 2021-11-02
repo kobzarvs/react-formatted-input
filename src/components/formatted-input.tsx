@@ -16,7 +16,7 @@ export interface FormattedInputProps {
   placeholder: string;
   errorMessage: string;
   parser?: (str: string | null | undefined) => string;
-  formatter: (str: string, mask: string) => string;
+  formatter?: (str: string, mask: string) => string;
   onChange: (str: string) => void;
 }
 
@@ -104,11 +104,13 @@ export const FormattedInput = ({
   onChange,
 }: FormattedInputProps) => {
   parser = parser || defaultParser;
+  formatter = formatter || defaultFormatter;
 
   const ref = useRef<HTMLInputElement | null>(null);
   const formattedValue = formatter(value, mask);
   const id = useRef(Math.random().toString(36));
   const [error, setError] = useState(false);
+  const errorBorder = error ? {border: '2px solid red'} : {};
 
   const getPattern = useCallback(
     (value: string): string => {
@@ -170,7 +172,6 @@ export const FormattedInput = ({
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       let caret = ref.current?.selectionStart || getStartPosition(mask);
-      // @ts-ignore
       const target = e.target as HTMLInputElement;
 
       switch (e.key) {
@@ -181,36 +182,38 @@ export const FormattedInput = ({
             onChange('');
           }
           const pos = getStartPosition(mask);
+
           setCaret(target, pos);
           e.preventDefault();
           e.stopPropagation();
           break;
+
         case 'Backspace': {
           const valuePos = getValuePosition(value, mask, caret);
-          const newValue = `${value.substring(
-            0,
-            valuePos - 1,
-          )}${value.substring(valuePos, value.length)}`;
+          const newValue = `${value.substring(0, valuePos - 1)}${value.substring(valuePos, value.length)}`;
           let maskPos = getMaskPosition(newValue, mask, valuePos);
+
           maskPos = Math.max(maskPos - 1, getStartPosition(mask));
           onChange(newValue);
           setCaret(target, maskPos);
           e.preventDefault();
           e.stopPropagation();
-        }
           break;
+        }
+
         case 'Delete': {
           const valuePos = getValuePosition(value, mask, caret);
           const newValue = `${value.substring(0, valuePos)}${value.substring(
             valuePos + 1,
             value.length,
           )}`;
+
           onChange(newValue);
           setCaret(target, caret);
           e.preventDefault();
           e.stopPropagation();
-        }
           break;
+        }
       }
     },
     [mask, value, onChange],
@@ -230,8 +233,6 @@ export const FormattedInput = ({
     },
     [mask],
   );
-
-  const errorBorder = error ? {border: '2px solid red'} : {};
 
   useEffect(() => {
     validate(formattedValue, true);

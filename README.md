@@ -1,12 +1,5 @@
 ![demo](/public/formatted-input.gif)
 
-## Mask format
-```
-^ - upercase character
-_ - lowercase character
-# - number
-```
-
 ## Component API
 
 ```ts
@@ -17,9 +10,16 @@ interface FormattedInputProps {
   placeholder: string;
   errorMessage: string;
   parser?: (str: string | null | undefined) => string;
-  formatter: (str: string, mask: string) => string;
+  formatter?: (str: string, mask: string) => string;
   onChange: (str: string) => void;
 }
+```
+
+## Mask format
+```
+^ - upercase character
+_ - lowercase character
+# - number
 ```
 
 ## Exapmle:
@@ -38,10 +38,10 @@ const Demo = () => {
       value={phone}
       mask="+# (###) ###-##-##"
       placeholder="+7 (999) 123-45-67"
-      onChange={setPhone}
-      parser={defaultParser}
-      formatter={defaultFormatter}
       errorMessage="Invalid number"
+      onChange={setPhone}
+      parser={defaultParser} // optional
+      formatter={defaultFormatter} // optional
     />
   )
 };
