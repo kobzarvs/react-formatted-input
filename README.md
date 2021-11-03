@@ -1,3 +1,6 @@
+This is a test task from a job interview, which was allocated 30 minutes of live coding.
+Maybe this example will be useful for someone to start a more advanced component or you can use it as is.
+
 ![demo](/public/formatted-input.gif)
 
 ## Component API
