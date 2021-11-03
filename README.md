@@ -25,7 +25,7 @@ _ - lowercase character
 # - number
 ```
 
-## Exapmle:
+## Example:
 
 ```tsx
 import {useState} from 'react';
