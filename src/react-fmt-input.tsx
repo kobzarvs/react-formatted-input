@@ -284,10 +284,3 @@ export const FormattedInput = ({
     </div>
   );
 };
-
-
-const deadCode = () => {
-  const r=2*2;
-  return;
-  console.log('dead code');
-};
