@@ -88,7 +88,6 @@ const getMaskPosition = (
     if (MASK_CHARS.includes(mask[pos])) {
       i++;
     }
-    console.log(i, valuePos, pos, MASK_CHARS.includes(mask[pos]), value[i]);
   }
   return pos;
 };
@@ -142,11 +141,9 @@ export const FormattedInput = ({
 
       if (re.test(value)) {
         showError && setError(false);
-        console.log(value, true);
         return true;
       } else {
         showError && setError(true);
-        console.log(value, false);
         return false;
       }
     },
@@ -286,4 +283,11 @@ export const FormattedInput = ({
       </label>
     </div>
   );
+};
+
+
+const deadCode = () => {
+  const r=2*2;
+  return;
+  console.log('dead code');
 };

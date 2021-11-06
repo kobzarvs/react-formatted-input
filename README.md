@@ -50,9 +50,9 @@ const Demo = () => {
 };
 ```
 
-## Codesandbox example
+## Demo project
 
-https://codesandbox.io/s/formatted-input-demo-1tkmd?file=/src/App.tsx
+https://github.com/kobzarvs/formatted-input-demo
 
 ## Vercel demo
 
