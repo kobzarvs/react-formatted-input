@@ -3292,10 +3292,10 @@ pako@~1.0.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
 
-parcel-optimizer-custom-terser@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/parcel-optimizer-custom-terser/-/parcel-optimizer-custom-terser-1.0.2.tgz#30bab892493186fdd6f464e4a77869975c215ab2"
-  integrity sha512-YQuDT3JQau0P2k8gXvFSTX+c3/Zaf07RP9PwYqtnnK8QOVctSLxsXmhacT3cJbtIIdZsJQF7LAbix2xhXMG/Zg==
+parcel-optimizer-custom-terser@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/parcel-optimizer-custom-terser/-/parcel-optimizer-custom-terser-1.0.3.tgz#07cf69a74927d0f74fb4349c9c601546204703ed"
+  integrity sha512-EqKUsT8ELi8JY4TGcbMX1i5j62Ud+7vIijcivyKrKEdvOxFy5GMdqvVVt1EHNTKxG+Ma5PMq5oVK5xV1U7sIuA==
   dependencies:
     "@parcel/plugin" "^2.0.0"
     "@parcel/source-map" "^2.0.0"
